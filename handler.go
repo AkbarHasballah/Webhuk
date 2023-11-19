@@ -17,7 +17,7 @@ func PostBalasan(w http.ResponseWriter, r *http.Request) {
 	var msg model.IteungMessage
 	var resp atmessage.Response
 	json.NewDecoder(r.Body).Decode(&msg)
-	link := "https://medium.com/@salmanakbartafisa/whatsauth-is-a-free-to-use-platform-for-2fa-notifications-and-whatsapp-gateway-api-f4a6dc38b8d9?postPublishedType=initial" + " dan " + "xxx"
+	link := "https://github.com/InformasiwisataBandung/swagger"
 	if r.Header.Get("Secret") == os.Getenv("SECRET") {
 		if msg.Message == "loc" || msg.Message == "Loc" || msg.Message == "lokasi" || msg.LiveLoc {
 			location, err := ReverseGeocode(msg.Latitude, msg.Longitude)
@@ -39,7 +39,7 @@ func PostBalasan(w http.ResponseWriter, r *http.Request) {
 			dt := &wa.TextMessage{
 				To:       msg.Phone_number,
 				IsGroup:  false,
-				Messages: "Hai Hai Haiii kamuuuui " + msg.Alias_name + "\nSalman \n aku RAULLLL salam kenall yaaaa \n Cara penggunaan WhatsAuth ada di link berikut ini ya kak...\n" + link,
+				Messages: "Progres " + msg.Alias_name + "\nBackEnd Dev Informasi Wisata Bandung\n By Salman Akbar Hasbullah \n Link Pengerjaan Progres Proyek 3 disini\n" + link,
 			}
 			resp, _ = atapi.PostStructWithToken[atmessage.Response]("Token", os.Getenv("TOKEN"), dt, "https://api.wa.my.id/api/send/message/text")
 		}
